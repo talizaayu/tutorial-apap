@@ -27,8 +27,18 @@ public class AgeController {
 		return "HitungUmurPage.html";
 	}
 
-	@GetMapping(value = "/hitung-umur/{birthdate}")
+	@GetMapping(value = "/hitung-umur")
 	public String hitungUmurWithRequestParam(
+		@RequestParam(value = "birthdate")
+		@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+				Optional<LocalDate> birthdate,
+		Model model) {
+
+		return getHitungUmurPage(birthdate, model); 
+	}
+
+	@GetMapping(value = "/hitung-umur/{birthdate}")
+	public String hitungUmurWithPathVariable(
 		@PathVariable(value = "birthdate")
 		@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 				Optional<LocalDate> birthdate,
