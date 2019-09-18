@@ -45,7 +45,7 @@ public class RestoranController {
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
 
         if (restoran == null) {
-            return "not-found-restoran";
+            return "error";
         }
 
         model.addAttribute("resto", restoran);
@@ -78,7 +78,7 @@ public class RestoranController {
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
 
         if (restoran == null) {
-            return "not-found-restoran";
+            return "error";
         }
 
         model.addAttribute("resto", restoran);
@@ -98,7 +98,7 @@ public class RestoranController {
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
 
         if (restoran == null) {
-            return "not-found-restoran";
+            return "error";
         }
         restoran.setNomorTelepon(nomorTelepon);
         model.addAttribute("namaResto", restoran.getNama());
@@ -118,7 +118,7 @@ public class RestoranController {
 
         // Add model restoran ke "resto" untuk dirender
         if (restoran == null) {
-            return "not-found-restoran";
+            return "error";
         }
         model.addAttribute("namaResto", restoran.getNama());
         restoranService.deleteRestoran(restoran);
