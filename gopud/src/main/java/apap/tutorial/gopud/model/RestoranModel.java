@@ -6,6 +6,7 @@ public class RestoranModel {
     private String alamat;
     private Integer nomorTelepon;
 
+
     public RestoranModel(String idRestoran, String nama, String alamat, Integer nomorTelepon) {
         this.idRestoran = idRestoran;
         this.nama = nama;
