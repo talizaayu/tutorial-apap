@@ -1,24 +1,36 @@
 package apap.tutorial.gopud.model;
 
-public class RestoranModel {
-    private String idRestoran;
-    private String nama;
-    private String alamat;
-    private Integer nomorTelepon;
+import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-    public RestoranModel(String idRestoran, String nama, String alamat, Integer nomorTelepon) {
-        this.idRestoran = idRestoran;
-        this.nama = nama;
-        this.alamat = alamat;
-        this.nomorTelepon = nomorTelepon;
-    }
+@Entity
+@Table(name="restoran")
+public class RestoranModel implements Serializable {
+//  public RestoranModel(Long idRestoran, String nama, String alamat, Integer nomorTelepon, Integer rating){
+//         this.idRestoran = idRestoran;
+//         this.nama = nama;
+//         this.alamat = alamat;
+//         this.nomorTelepon = nomorTelepon;
+//         this.rating = rating;
+//     }
 
-    public String getIdRestoran() {
+    public Long getIdRestoran() {
         return this.idRestoran;
     }
 
-    public void setIdRestoran(String idRestoran) {
+    public void setIdRestoran(Long idRestoran) {
         this.idRestoran = idRestoran;
     }
 
@@ -46,5 +58,28 @@ public class RestoranModel {
         this.nomorTelepon = nomorTelepon;
     }
 
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idRestoran;
+
+    @NotNull
+    @Size(max=20)
+    @Column(name="nama", nullable = false)
+    private String nama;
+
+    @NotNull
+    @Size(max=30)
+    @Column(name="alamat", nullable = false)
+    private String alamat;
+
+    @NotNull
+    @Column(name = "nomorTelepon", nullable = false)
+    private Integer nomorTelepon;
+
+    @NotNull
+    @Column(name = "rating", nullable = false)
+    private Integer rating = 0;
+
+    @OneToMany(mappedBy = "restoran", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<MenuModel> listMenu;
 }
