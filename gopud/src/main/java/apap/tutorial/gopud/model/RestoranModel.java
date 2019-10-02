@@ -82,4 +82,14 @@ public class RestoranModel implements Serializable {
 
     @OneToMany(mappedBy = "restoran", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MenuModel> listMenu;
+
+	public void setListMenu(List<MenuModel> listMenu) {
+        this.listMenu = listMenu;
+	}
+
+    public List<MenuModel> getListMenu() {
+        return listMenu;
+    }
+
+
 }

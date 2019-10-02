@@ -55,11 +55,10 @@ public class RestoranController {
         
         // Mengambil objek RestoranModel yang dituju
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+        List<MenuModel> menuList = menuService.getListMenuOrderByHargaAsc(restoran.getIdRestoran());
+        restoran.setListMenu(menuList);
 
         model.addAttribute("resto", restoran);
-
-        List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(restoran.getIdRestoran());
-        model.addAttribute("menuList", menuList);
 
         return "view-restoran";
     }
@@ -92,44 +91,6 @@ public class RestoranController {
         return "viewall-restoran"; 
     }
 
-    // @GetMapping("/restoran/view/id-restoran/{idRestoran}")
-    // public String viewPath(
-    //     // Request Parameter untuk dipass
-    //     @PathVariable(value = "idRestoran") String idRestoran, Model model 
-    //     ) {
-        
-    //     // Mengambil objek RestoranModel yang dituju
-    //     RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
-
-    //     if (restoran == null) {
-    //         return "error";
-    //     }
-
-    //     model.addAttribute("resto", restoran);
-
-    //     // Return view template
-    //     return "view-restoran";
-    // }
-
-    // @GetMapping("/restoran/update/id-restoran/{idRestoran}/nomor-telepon/{nomorTelepon}")
-    // public String update(
-    //     // Request Parameter untuk dipass
-    //     @PathVariable(value = "idRestoran", required = true) String idRestoran, 
-    //     @PathVariable(value = "nomorTelepon", required = true) Integer nomorTelepon, Model model 
-    //     ) {
-        
-    //     // Mengambil objek RestoranModel yang dituju
-    //     RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
-
-    //     if (restoran == null) {
-    //         return "error";
-    //     }
-    //     restoran.setNomorTelepon(nomorTelepon);
-    //     model.addAttribute("namaResto", restoran.getNama());
-
-    //     // Return view template
-    //     return "update-restoran";
-    // }
 
     @RequestMapping(path="/restoran/delete/{idRestoran}")
     public String delete(
