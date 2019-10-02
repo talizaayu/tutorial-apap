@@ -4,7 +4,7 @@
     <title>View Restoran</title>
 </head>
 <body>
-    <h2>Informasi Restoran</h2>
+    <!-- <h2>Informasi Restoran</h2>
     <h3 th:text="'ID Restoran: ' + ${resto.idRestoran}"></h3>
     <h3 th:text="'Nama Restoran: ' + ${resto.nama}"></h3>
     <h3 th:text="'Alamat Restoran: ' + ${resto.alamat}"></h3>
@@ -27,6 +27,32 @@
         </br>
     </div>
 
-    <td><a th:href="@{/menu/add/}+${resto.idRestoran}">Add Menu</a></td>
+    <td><a th:href="@{/menu/add/}+${resto.idRestoran}">Add Menu</a></td> -->
+
+    <h2> Daftar Menu: </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Id Menu</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Deskripsi</th>
+                <th>Durasi Penyajian</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="menu, iterationStatus : *{menuList}"
+                th:style="${iterationStatus.even} ? 'color: blue'"></td>
+                <td th:text="${iterationStatus.count}"> </td>
+                <td th:text="${menu.id}"></td>
+                <td th:text="${menu.nama}"></td>
+                <td th:if="${menu.harga} >= 10000">Diatas 10k </td>
+                <td th:unless="${menu.harga} >= 10000">Dibawah 10k </td>
+                <td th:text="${menu.deskripsi}"></td>
+                <td th:text="${menu.durasiMasak}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
