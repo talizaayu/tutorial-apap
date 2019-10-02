@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymelaf.org">
 
 <head>
+    <meta charset="UTF-8">
     <title> Home </title>
 
     <head th:fragment="css">
@@ -24,8 +25,8 @@
 </head>
 
 <body>
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <nav th:fragment="navbar (pageTitle)" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:text="${pageTitle}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
