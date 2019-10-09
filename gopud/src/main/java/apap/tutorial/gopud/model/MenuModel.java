@@ -20,14 +20,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "menu")
 
 public class MenuModel implements Serializable{
-    // public MenuModel(Long id, String nama, String deskripsi, BigInteger harga, Integer durasiMasak){
-    //     this.id = id;
-    //     this.nama = nama;
-    //     this.durasiMasak = durasiMasak;
-    //     this.harga = harga;
-    //     this.deskripsi = deskripsi;
-
-    // }
 
     public Long getId() {
         return id;

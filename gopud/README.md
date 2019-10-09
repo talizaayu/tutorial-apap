@@ -60,4 +60,29 @@ https://user-images.githubusercontent.com/45730367/65688067-a0db0280-e094-11e9-9
 ### What I did not understand
 >Penggunaan port pada XAMPP
 >Annotation pada JPA
->
+
+---
+## Tutorial 4
+### What I have learned today
+>Thymleaf
+>Fragment
+
+Jawablah pertanyaan dibawah ini pada file readme.
+1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2
+>Yang saya pelajari dari latihan nomor 2 adalah membuat navigation bar menjadi dinamis sehingga judul navabar di setiap halaman sesuai dengan halaman yang sedang diakses. Cara menyelesaikan latihan nomor 2 adalah dengan menambahkan th:text="${pageTitle} pada file fragment dan menambahkan (pageTitle='nama_halaman') pada setiap implementasi fragment di html. Hal ini dilakukan agar judul navbar akan terganti sesuai dengan pageTitle yang diakses.
+
+2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 3
+>Yang saya pelajari dari latihan nomor 3 adalah mengimplementasikan expression iteration. Cara menyelesaikan latihan nomor 3 adalah dengan menambahkan method untuk add row dan delete row pada Menu Controller serta mengedit file html form add menu. Selain itu, di Menu Controller mengimplementasikan ArrayList untuk menyimpan menu model di dalam ArrayList. Hal ini dilakukan untuk mengiterasikan isi list yang sudah dibuat untuk submit list yang diisi. Expression iteration dan page title diimplementasikan di file html form add menu untuk menampilkan tabel isi menu.
+
+3. Jelaskan perbedaan th:include dan th:replace
+th:include berati akan memasukkan konten yang ada di fragments kedalam tag hostnya, sedangkan th:replace digunakan untuk mengubah tag menjadi tag yang di define oleh fragment. Sedangkan, th:replace berfungsi untuk memasukkan fragmen yang ditentukan sebagai badan dari tag hostnya tetapi tidak termasuk tag fragmen sedangkan th:replace berfungsi untuk mengganti tag host dengan fragmen yang berarti menghapus tag host dan sebagai pengganti tag host, itu akan menambahkan fragmen yang ditentukan termasuk tag fragmen.
+
+4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+>th:object berfungsi untuk menentukan objek yang terhubung dengan form data yang dikirimkan dan tujuannya adalah untuk select an object. 
+
+th:object digunakan untuk menentukan objek yang terhubung dengan form data yang dikirimkan, cara penggunaannya ...
+
+Atribut th:object merupakan referensi Model key yang mereferensikan Command object atau form bean yang merepresentasikan state dari form. Tujuan dari th:object adalah untuk select an object.
+
+### What I did not understand
+>Kegunaan attribute di thymeleaf
