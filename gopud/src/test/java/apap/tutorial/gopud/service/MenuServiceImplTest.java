@@ -110,6 +110,17 @@ public class MenuServiceImplTest {
         assertEquals(Long.valueOf(1), dataFromServiceCall.getId());
     }
 
+    @Test
+    public void whenChangeMenuCalledButNotFound() {
+        MenuModel updatedData = new MenuModel();
+        updatedData.setId((long)1);
+
+        when(menuDB.findById(1L)).thenReturn(Optional.of(updatedData));
+        when(menuService.changeMenu(updatedData)).thenThrow(new NullPointerException());
+
+        assertNull(menuService.changeMenu(updatedData));
+    }
+
 
 }
 
