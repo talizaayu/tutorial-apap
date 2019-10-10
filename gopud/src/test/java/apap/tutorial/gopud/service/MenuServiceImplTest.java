@@ -121,6 +121,14 @@ public class MenuServiceImplTest {
         assertNull(menuService.changeMenu(updatedData));
     }
 
+    @Test
+    public void whenDeleteMenuCalledItShouldDeleteMenuData(){
+        MenuModel menuModel = new MenuModel();
+        menuModel.setId((long) 1);
+        lenient().when(menuDB.findById(1L)).thenReturn(Optional.of(menuModel));
+        menuService.deleteMenu(menuModel);
+        verify(menuDB, times(1)).deleteById(1L);
+    }
 
 }
 
