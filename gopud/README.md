@@ -78,11 +78,38 @@ Jawablah pertanyaan dibawah ini pada file readme.
 th:include berati akan memasukkan konten yang ada di fragments kedalam tag hostnya, sedangkan th:replace digunakan untuk mengubah tag menjadi tag yang di define oleh fragment. Sedangkan, th:replace berfungsi untuk memasukkan fragmen yang ditentukan sebagai badan dari tag hostnya tetapi tidak termasuk tag fragmen sedangkan th:replace berfungsi untuk mengganti tag host dengan fragmen yang berarti menghapus tag host dan sebagai pengganti tag host, itu akan menambahkan fragmen yang ditentukan termasuk tag fragmen.
 
 4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
->th:object berfungsi untuk menentukan objek yang terhubung dengan form data yang dikirimkan dan tujuannya adalah untuk select an object. 
-
-th:object digunakan untuk menentukan objek yang terhubung dengan form data yang dikirimkan, cara penggunaannya ...
-
-Atribut th:object merupakan referensi Model key yang mereferensikan Command object atau form bean yang merepresentasikan state dari form. Tujuan dari th:object adalah untuk select an object.
+>th:object berfungsi untuk menentukan objek yang terhubung dengan form data yang dikirimkan dan tujuannya adalah untuk select an object. Atribut th:object merupakan referensi Model key yang mereferensikan Command object atau form bean yang merepresentasikan state dari form. Tujuan dari th:object adalah untuk select an object.
 
 ### What I did not understand
 >Kegunaan attribute di thymeleaf
+
+---
+## Tutorial 5
+### What I have learned today
+>1. Unit testing
+>2. Code coverage
+
+### Pertanyaan
+Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.
+>* Given
+>> Terjadi saat mendefinisikan apa yang seharusnya dikembalikan database
+>>![Screen Shot 2019-10-10 at 21 49 15](https://user-images.githubusercontent.com/45730367/66580018-ed9bfe80-eba7-11e9-8fb3-ec57df9ba7b6.png)
+>* When
+>> Kondisi dan interaksi apa yang akan di-test
+>> ![Screen Shot 2019-10-10 at 21 52 13](https://user-images.githubusercontent.com/45730367/66580226-410e4c80-eba8-11e9-9fa4-bc055a869468.png)
+>* Then
+>> Terjadi saat pendefinisian hasil interaksi kode yang diharapkan
+>> ![Screen Shot 2019-10-10 at 21 54 03](https://user-images.githubusercontent.com/45730367/66580377-829ef780-eba8-11e9-8f30-1eefbcbb187f.png)
+
+Jelaskan perbedaan line coverage dan logic coverage.
+>Line coverage mengukur berapa banyak pernyataan yang diambil. Pernyataan biasanya berupa baris kode, tidak termasuk komentar, kondisional, dll. Line coverage menguji kode per-baris. Sedangkan, Logic Coverage melakukan pengujian pada struktur internal kode yang berupa logical expressions yang ada pada kode. Logic coverage menguji decision yang terdapat pada program.
+>
+Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin terjadi?
+>Untuk keadaan ideal yang harus dibuat terlebih dahulu adalah unit test. Unit test dibuat terlebih dahulu karena jika implementasi kode ingin diubah, tidak harus mengubah behaviour seluruh kode. Jika terdapat kode baru yang ditambahkan kemudian menimbulkan error, tidak perlu dikhawatirkan karena unit test untuk bagian kode tersebut sudah dibuat dan berhasil dijalankan. Jika urutan dibalik, risiko yang terjadi adalah kemungkinan kode yang dibuat terdapat error sehingga membutuhkan waktu yang lebih untuk membenarkan dan meng-handle error pada kode.
+>
+[Bonus] Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage.
+> Main class spring tidak diikutsertakan ke dalam perhitungan coverage karena main class method merupakan class yang tidak dihitung coverage nya, sehingga akan mengurangi total dari penghitungan coverage. Hal yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage adalah file built-in dan file yang mempunyai code coverage rendah dan akan mengakibatkan pengurangan coverage secara keseluruhan. Kemudian, file configuration yang tidak terdapat proses didalamnya.
+
+### What I did not understand
+>The testing syntax
+
