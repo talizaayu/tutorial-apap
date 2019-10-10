@@ -89,6 +89,23 @@ th:include berati akan memasukkan konten yang ada di fragments kedalam tag hostn
 >1. Unit testing
 >2. Code coverage
 
+### Code Coverage
+> * MenuServiceImplTest
+>> Sebelum
+>> ![Screen Shot 2019-10-10 at 22 14 29](https://user-images.githubusercontent.com/45730367/66582127-75373c80-ebab-11e9-806e-7a75ba27c388.png)
+>> Sesudah
+>> ![Screen Shot 2019-10-10 at 22 17 30](https://user-images.githubusercontent.com/45730367/66582327-ca734e00-ebab-11e9-9813-1052294eb607.png)
+> * RestoranControllerTest
+>> Sebelum
+>> ![Screen Shot 2019-10-10 at 14 40 38](https://user-images.githubusercontent.com/45730367/66581620-9ba8a800-ebaa-11e9-924c-de81baccf52c.png)
+>> Sesudah
+>> ![Screen Shot 2019-10-10 at 22 10 23](https://user-images.githubusercontent.com/45730367/66581712-cabf1980-ebaa-11e9-9c5d-38da1e564f21.png)
+> * Konfigurasi main class
+>> Sebelum
+>> ![Screen Shot 2019-10-09 at 21 12 00](https://user-images.githubusercontent.com/45730367/66582460-08707200-ebac-11e9-94f3-abd2f6ad2f05.png)
+>> Sesudah
+>> ![Screen Shot 2019-10-10 at 22 19 49](https://user-images.githubusercontent.com/45730367/66582515-2211b980-ebac-11e9-98e9-5ba243ed0a48.png)
+
 ### Pertanyaan
 Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.
 >* Given
