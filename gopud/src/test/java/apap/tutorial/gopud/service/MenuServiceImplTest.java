@@ -40,6 +40,20 @@ public class MenuServiceImplTest {
         verify(menuDB, times(1)).save(newMenu);
     }
 
+    @Test
+    public void whenGetMenuListOrderByHargaCalledItShouldReturnAllMenu() {
+        List<MenuModel> allMenuInDatabase = new ArrayList<>();
+        for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
+            allMenuInDatabase.add(new MenuModel());
+        }
+        when (menuService.getListMenuOrderByHargaAsc(1L)).thenReturn(allMenuInDatabase);
+
+        List<MenuModel> dataFromServiceCall = menuService.getListMenuOrderByHargaAsc(1L);
+        assertEquals(3, dataFromServiceCall.size());
+
+        verify(menuDB, times(1)).findByRestoranIdRestoranOrderByHargaAsc(1L);
+    }
+
 
 }
 
