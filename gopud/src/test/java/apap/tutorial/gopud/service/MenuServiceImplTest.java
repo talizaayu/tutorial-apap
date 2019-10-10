@@ -41,7 +41,7 @@ public class MenuServiceImplTest {
     }
 
     @Test
-    public void whenGetMenuListOrderByHargaCalledItShouldReturnAllMenu() {
+    public void whenGetMenuListOrderByHargaCalledItShouldReturnMenu() {
         List<MenuModel> allMenuInDatabase = new ArrayList<>();
         for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
             allMenuInDatabase.add(new MenuModel());
@@ -52,6 +52,20 @@ public class MenuServiceImplTest {
         assertEquals(3, dataFromServiceCall.size());
 
         verify(menuDB, times(1)).findByRestoranIdRestoranOrderByHargaAsc(1L);
+    }
+
+    @Test
+    public void whenGetAllMenuByIdRestoranCalledItShouldReturnAllMenu() {
+        List<MenuModel> allMenuInDatabase = new ArrayList<>();
+        for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
+            allMenuInDatabase.add(new MenuModel());
+        }
+        when (menuService.findAllMenuByIdRestoran(1L)).thenReturn(allMenuInDatabase);
+
+        List<MenuModel> dataFromServiceCall = menuService.findAllMenuByIdRestoran(1L);
+
+        verify(menuDB, times(1)).findByRestoranIdRestoran(1L);
+        assertEquals(3, dataFromServiceCall.size());
     }
 
 
