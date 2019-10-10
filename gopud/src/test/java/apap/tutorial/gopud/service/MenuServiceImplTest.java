@@ -68,6 +68,27 @@ public class MenuServiceImplTest {
         assertEquals(3, dataFromServiceCall.size());
     }
 
+    @Test
+    public void whenGetMenuByIdCalledByExistingDataItShouldReturnCorrectData() {
+        MenuModel returnedData = new MenuModel();
+        returnedData.setNama("burger");
+        returnedData.setHarga(BigInteger.valueOf(25000));
+        returnedData.setDeskripsi("keju");
+        returnedData.setDurasiMasak(20);
+
+        when(menuService.getMenuById(1L)).thenReturn(Optional.of(returnedData));
+        Optional<MenuModel> dataFromServiceCall = menuService.getMenuById(1L);
+
+        verify(menuDB, times(1)).findById(1L);
+        assertTrue(dataFromServiceCall.isPresent());
+        MenuModel dataFromOptional = dataFromServiceCall.get();
+
+        assertEquals("burger", dataFromOptional.getNama());
+        assertEquals(BigInteger.valueOf(25000), dataFromOptional.getHarga());
+        assertEquals("keju", dataFromOptional.getDeskripsi());
+        assertEquals(Integer.valueOf(20), dataFromOptional.getDurasiMasak());
+    }
+
 
 }
 
