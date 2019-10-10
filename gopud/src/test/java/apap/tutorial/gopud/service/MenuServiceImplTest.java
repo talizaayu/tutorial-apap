@@ -89,6 +89,27 @@ public class MenuServiceImplTest {
         assertEquals(Integer.valueOf(20), dataFromOptional.getDurasiMasak());
     }
 
+    @Test
+    public void whenChangeMenuCalledItShouldChangeMenuData() {
+        MenuModel updatedData = new MenuModel();
+        updatedData.setNama("burger");
+        updatedData.setHarga(BigInteger.valueOf(25000));
+        updatedData.setDeskripsi("keju");
+        updatedData.setDurasiMasak(Integer.valueOf(20));
+        updatedData.setId((long)1);
+        menuService.addMenu(updatedData);
+
+        when(menuDB.findById(1L)).thenReturn(Optional.of(updatedData));
+        when(menuService.changeMenu(updatedData)).thenReturn(updatedData);
+
+        MenuModel dataFromServiceCall = menuService.changeMenu(updatedData);
+        assertEquals("burger", dataFromServiceCall.getNama());
+        assertEquals(BigInteger.valueOf(25000), dataFromServiceCall.getHarga());
+        assertEquals("keju", dataFromServiceCall.getDeskripsi());
+        assertEquals(Integer.valueOf(20), dataFromServiceCall.getDurasiMasak());
+        assertEquals(Long.valueOf(1), dataFromServiceCall.getId());
+    }
+
 
 }
 
