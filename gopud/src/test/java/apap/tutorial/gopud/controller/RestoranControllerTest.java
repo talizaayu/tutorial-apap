@@ -92,4 +92,16 @@ public class RestoranControllerTest {
         verify(restoranService, times(1)).getRestoranList();
     }
 
+    @Test
+    public void whenViewRestoranGetId() throws Exception {
+        RestoranModel dummy = generateDummyRestoranModel(1);
+
+        when(restoranService.getRestoranByIdRestoran(1L)).thenReturn(Optional.of(dummy));
+        mockMvc.perform(get("/restoran/view").param("idRestoran", "1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(model().attribute("resto", hasProperty("nama", is("dummy 1"))))
+                .andExpect(model().attribute("resto", hasProperty("alamat", is("alamat 1"))))
+                .andExpect(model().attribute("resto", hasProperty("idRestoran", is(1L))))
+                .andExpect(model().attribute("resto", hasProperty("nomorTelepon", is(14000))));
+    }
 }
