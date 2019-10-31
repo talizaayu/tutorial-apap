@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RestoranDetail {
     private String status;
 
-    @JsonProperty("restoran-license")
+    @JsonProperty("restaurant-license")
     private Integer restaurantLicense;
 
     @JsonProperty("valid-until")

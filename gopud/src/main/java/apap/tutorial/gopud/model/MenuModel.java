@@ -12,13 +12,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "menu")
-
+@JsonIgnoreProperties(value = {"restoran"}, allowSetters = true)
 public class MenuModel implements Serializable{
 
     public Long getId() {
@@ -87,11 +91,11 @@ private Integer durasiMasak;
 @NotNull
 @Size(max = 50)
 @Column(name = "deskripsi", nullable = false)
+
 private String deskripsi;
 
 @ManyToOne(fetch = FetchType.EAGER, optional = false)
 @JoinColumn(name = "restoranId", referencedColumnName = "idRestoran", nullable = false)
 @OnDelete(action = OnDeleteAction.CASCADE)
-@JsonIgnore
 private RestoranModel restoran;
 }

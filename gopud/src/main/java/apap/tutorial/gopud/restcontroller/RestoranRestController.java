@@ -1,7 +1,7 @@
 package apap.tutorial.gopud.restcontroller;
 
 import apap.tutorial.gopud.model.RestoranModel;
-// import apap.tutorial.gopud.rest.RestoranDetail;
+import apap.tutorial.gopud.rest.RestoranDetail;
 import apap.tutorial.gopud.service.RestoranRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-// import reactor.core.publisher.Mono;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -40,7 +40,7 @@ public class RestoranRestController {
         }
     }
 
-    @DeleteMapping(value = "/restoran/{idRestoan}")
+    @DeleteMapping(value = "/restoran/{idRestoran}")
     private ResponseEntity<String> deleteRestoran(@PathVariable("idRestoran") Long idRestoran) {
         try {
             restoranRestService.deleteRestoran(idRestoran);
@@ -52,7 +52,7 @@ public class RestoranRestController {
         }
     }
 
-    @PutMapping(value = "/restotan/{idRestoran}")
+    @PutMapping(value = "/restoran/{idRestoran}")
     private RestoranModel updateRestoran(@PathVariable(value = "idRestoran") Long idRestoran, @RequestBody RestoranModel restoran) {
         try {
             return restoranRestService.changeRestoran(idRestoran, restoran);
@@ -64,5 +64,15 @@ public class RestoranRestController {
     @GetMapping(value = "/restorans")
     private List<RestoranModel> retrieveListRestoran(){
         return restoranRestService.retrieveListRestoran();
+    }
+
+    @GetMapping(value = "/restoran/{idRestoran}/status")
+    private Mono<String> getStatus(@PathVariable Long idRestoran) {
+        return restoranRestService.getStatus(idRestoran);
+    }
+
+    @GetMapping(value="/full")
+    private Mono<RestoranDetail> postStatus() {
+        return restoranRestService.postStatus();
     }
 }
