@@ -125,8 +125,25 @@ Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit t
 >Untuk keadaan ideal yang harus dibuat terlebih dahulu adalah unit test. Unit test dibuat terlebih dahulu karena jika implementasi kode ingin diubah, tidak harus mengubah behaviour seluruh kode. Jika terdapat kode baru yang ditambahkan kemudian menimbulkan error, tidak perlu dikhawatirkan karena unit test untuk bagian kode tersebut sudah dibuat dan berhasil dijalankan. Jika urutan dibalik, risiko yang terjadi adalah kemungkinan kode yang dibuat terdapat error sehingga membutuhkan waktu yang lebih untuk membenarkan dan meng-handle error pada kode.
 >
 [Bonus] Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage.
-> Main class spring tidak diikutsertakan ke dalam perhitungan coverage karena main class method merupakan class yang tidak dihitung coverage nya, sehingga akan mengurangi total dari penghitungan coverage. Hal yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage adalah file built-in dan file yang mempunyai code coverage rendah dan akan mengakibatkan pengurangan coverage secara keseluruhan. Kemudian, file configuration yang tidak terdapat proses didalamnya.
+> Main class spring tidak diikutsertakan ke dalam perhitungan coverage karena main class method merupakan class yang tidak dihitung coverage nya, sehingga akan mengurangi total dari penghitungan coverage. Hal yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage adalah file built-in dan file yang mempunyai code coverage rendah dan akan mengakibatkan pengurangan coverage secara keseluruhan. Kemudian, file configuration yang tidak terdapat proses didalamnya. 
 
 ### What I did not understand
 >The testing syntax
+>
+
+## Tutorial 6
+### What I have learned today
+>1. Web service
+>2. Postman
+
+### Pertanyaan
+1. Apa itu postman? Apa kegunaan dari postman?
+> Postman adalah platform kolaborasi untuk pengembangan API. Fitur Postman menyederhanakan setiap langkah membangun API dan merampingkan kolaborasi sehingga dapat membuat API yang lebih baik dan cepat. Postman dapat digunakan untuk membuat berbagai jenis request HTTP yaitu GET, POST, PUT, PATCH dan DELETE. Postman memiliki fitur Variables, Pre-Request Script, Environments, dan Tests.
+2. Apa kegunaan dari annotation @JsonIgnoreProperties?
+> @JsonIgnoreProperties merupakan anotasi yang dapat digunakan untuk menekan serialisasi properti (selama serialisasi), atau mengabaikan pemrosesan properti JSON yang dibaca (saat deserialisasi)
+3. Apa itu ResponseEntity dan apa kegunaannya?
+>ResponseEntity mewakili seluruh respons HTTP: status code, headers, dan body. Karena itu, ResponseEntity dapat menggunakannya untuk mengkonfigurasi respons HTTP sepenuhnya. Jika kita ingin menggunakannya, kita harus mengembalikannya dari titik akhir kemudian Spring mengurus sisanya. ResponseEntity adalah generic type.
+
+### What I did not understand
+>1. Rest
 
