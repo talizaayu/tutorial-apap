@@ -23,4 +23,9 @@ public class RecipeRestController {
     private Mono<String> postStatus(@PathVariable String namaBahan) {
         return recipeRestService.postStatus(namaBahan);
     }
+
+    @GetMapping(value = "/api/v1/restoran/chef")
+    private Mono<String> getChefName(@RequestParam(value = "nama") String chefName){
+        return recipeRestService.getChef(chefName);
+    }
 }

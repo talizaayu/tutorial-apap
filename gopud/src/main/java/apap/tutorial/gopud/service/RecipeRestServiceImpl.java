@@ -22,10 +22,12 @@ import apap.tutorial.gopud.rest.Setting;
 @Transactional
 public class RecipeRestServiceImpl implements RecipeRestService {
     private final WebClient webClient;
+    private final WebClient webClientDemo;
     private final static String apiKey = "0887aa2dc3e54f5c9a54cbeda842e651";
 
     public RecipeRestServiceImpl(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Setting.recipeUrl).build();
+        this.webClientDemo = webClientBuilder.baseUrl(Setting.chefUrl).build();
     }
 
     @Override
@@ -35,6 +37,11 @@ public class RecipeRestServiceImpl implements RecipeRestService {
         data.add("cuisine", "german");
         data.add("apiKey", apiKey);
         return this.webClient.get().uri(uriBuilder -> uriBuilder.path("/recipes/search").queryParams(data).build()).retrieve().bodyToMono(String.class);
+    }
+
+    @Override
+    public Mono<String> getChef(String chefName){
+        return this.webClientDemo.get().uri("/api/v1/restoran/chef?nama="+chefName).retrieve().bodyToMono(String.class);
     }
 }
 
