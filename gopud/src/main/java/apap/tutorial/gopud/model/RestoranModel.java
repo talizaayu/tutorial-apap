@@ -58,6 +58,14 @@ public class RestoranModel implements Serializable {
         this.nomorTelepon = nomorTelepon;
     }
 
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRestoran;
