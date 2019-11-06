@@ -25,4 +25,22 @@ public class UserRoleServiceImpl implements UserRoleService {
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
     }
+
+    @Override
+    public UserModel findByUsername(String username) {
+        return userRoleDb.findByUsername(username);
+    }
+
+    @Override
+    public UserModel updatePassword(UserModel user, String password, String oldPassword) {
+        String encryptPass = encrypt(password);
+        user.setPassword(encryptPass);
+        return userRoleDb.save(user);
+    }
+
+    @Override
+    public Boolean validate(String passwordExisted, String inputPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(inputPassword, passwordExisted);
+    }
 }
