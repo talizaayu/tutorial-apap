@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import apap.tutorial.gopud.model.UserModel;
+import apap.tutorial.gopud.repository.UserRoleDb;
 import apap.tutorial.gopud.service.UserRoleService;
 
 @Controller
@@ -22,21 +23,25 @@ public class UserController {
     @Autowired
     private UserRoleService userRoleService;
 
+    @Autowired
+    private UserRoleDb userRoleDb;
+
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    private String addUserSubmit(@ModelAttribute UserModel user, Model model) {
+    private String addUserSubmit(Locale locale, @RequestParam("password") String password, @RequestParam("confirmedPassword") String confirmPassword, @ModelAttribute UserModel user, Model model) {
         String messages = "";
-        if (validatePassword(user.getPassword())) {
-            userRoleService.addUser(user);
-            messages = "User added successfully";
-            model.addAttribute("message", messages);
-            return "add-user";
+        if(confirmPassword.equals(password)) {
+            if (validatePassword(user.getPassword()) && checkUsername(user.getUsername()) ) {
+                userRoleService.addUser(user);
+                messages = "User added successfully";
+                model.addAttribute("message", messages);
+                return "add-user";
+            }
         }
-        else {
-            messages = "Password invalid. Must contain at least one number and at least 8 or more characters";
-            model.addAttribute("message", messages);
-            return "invalid-password";
-        } 
+        messages = "Password invalid. Must contain at least one number and at least 10 or more characters";
+        model.addAttribute("message", messages);
+        return "invalid-password";
     }
+
 
     @RequestMapping(value = "/updatePassword", method = RequestMethod.GET)
     private String updatePasswordForm(@ModelAttribute UserModel user) {
@@ -65,11 +70,20 @@ public class UserController {
     }
 
    public boolean validatePassword(String password) {
-        if (password.length()>=8 && Pattern.compile("[0-9]").matcher(password).find() && Pattern.compile("[a-zA-Z]").matcher(password).find())  {
+        if (password.length()>=8 && Pattern.compile("[0-11]").matcher(password).find() && Pattern.compile("[a-zA-Z]").matcher(password).find())  {
             return true;
         }
         else {
             return false;
         }
+    }
+
+    public boolean checkUsername(String username) {
+        for (UserModel user : userRoleDb.findAll()) {
+            if (username.equals(user.getUsername())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
