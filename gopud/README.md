@@ -147,3 +147,25 @@ Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit t
 ### What I did not understand
 >1. Rest
 
+##Tutorial 7
+### What I have learned today
+
+### Pertanyaan
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+> Dalam proses otentikasi, identitas pengguna diperiksa untuk memberikan akses ke sistem, pengguna atau orang diverifikasi, kemudian biasanya membutuhkan detail login pengguna, serta dapat menentukan apakah orang tersebut pengguna atau bukan. Proses otentikasi juga dilakukan sebelum proses otorisasi.
+Sedangkan dalam proses otorisasi, otoritas orang atau pengguna diperiksa untuk mengakses sumber daya, pengguna atau orang divalidasi, membutuhkan tingkat hak istimewa atau keamanan pengguna, serta menentukan izin apa yang dimiliki pengguna. Proses otorisasi juga dilakukan setelah proses otentikasi.
+>>Otentikasi (di package security file WebSecurityConfig.java)
+>![Screen Shot 2019-11-06 at 21 49 04](https://user-images.githubusercontent.com/45730367/68308395-632fb780-00df-11ea-8438-9e14766f98c7.png)
+>Pada bagian ini diharapkan user sudah terotentikasi
+>>>Otorisasi (di package security file WebSecurityConfig.java)
+>![Screen Shot 2019-11-06 at 21 52 34](https://user-images.githubusercontent.com/45730367/68308634-cae60280-00df-11ea-87c3-dcc7724ad46b.png)
+>Pada bagian ini hanya user memiliki otorisasi admin yang dapat mengaksesnya
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerjanya!
+>Bycrpt secara internal akan menghasilkan random salt. Maksudnya adalah setiap panggilan akan memiliki hasil yang berbeda, jadi hanya perlu menyandikan kata sandi sekali. Algoritma BCrypt menghasilkan String dengan panjang 60, jadi perlu dipastikan bahwa password akan disimpan dalam kolom yang dapat menampungnya. Kesalahan umum adalah membuat kolom dengan panjang yang berbeda kemudian mendapatkan kesalahan nama user atau invalid password pada waktu otentikasi.
+BCryptPasswordEncoder secara otomatis menghasilkan dan menggunakan random salt untuk menghitung hash, itu sebabnya setiap kali di-call akan mendapatkan output yang berbeda. Contohnya jika dihasilkan 10 hash dalam satu lingkaran, semuanya akan berbeda dan valid.
+Cara kerja bycrpt : "Generate a random salt. A "cost" factor has been pre-configured. Collect a password."
+>Pertama, memperoleh encryption key dari salt dan cost factor. Salt dan cost factor digunakan untuk encrypt string yang well-known. Kemudian, simpan cost, salt, dan cipher text. Karena ketiga elemen ini memiliki panjang yang diketahui, mudah untuk menggabungkannya dan menyimpannya dalam satu field, dan nantinya akan dapat dipisahkan. Ketika seseorang mencoba mengautentikasi, ambil salt dan cost yang tersimpan kemudian derive key dari input password, cost, dan salt lalu encrypt string yang well-known yang sama. Jika chiper text yang dihasilkan cocok dengan chiper text yang tersimpan, maka passwordnya match.
+3. Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java?
+>A universally unique identifier (UUID) adalah adalah nomor 128-bit yang mengidentifikasi objek atau data Internet yang unik. UUID dihasilkan oleh algoritma dengan values yang didasarkan pada network address mesin. UUID digunakan di UserModel.java untuk
+4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
+>UserDetailsServiceImpl adalah antarmuka inti dalam kerangka kerja Spring Security. UserDetailsServiceImpl digunakan untuk mengambil informasi otentikasi dan otorisasi pengguna. Class tersebut memiliki metode loadUserByUsername() yang dapat diganti untuk menyesuaikan proses menemukan pengguna. Ini digunakan oleh DaoAuthenticationProvider untuk memuat detail tentang pengguna selama otentikasi.
