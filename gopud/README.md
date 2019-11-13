@@ -169,3 +169,40 @@ Cara kerja bycrpt : "Generate a random salt. A "cost" factor has been pre-config
 >A universally unique identifier (UUID) adalah adalah nomor 128-bit yang mengidentifikasi objek atau data Internet yang unik. UUID dihasilkan oleh algoritma dengan values yang didasarkan pada network address mesin. UUID digunakan di UserModel.java untuk
 4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
 >UserDetailsServiceImpl adalah antarmuka inti dalam kerangka kerja Spring Security. UserDetailsServiceImpl digunakan untuk mengambil informasi otentikasi dan otorisasi pengguna. Class tersebut memiliki metode loadUserByUsername() yang dapat diganti untuk menyesuaikan proses menemukan pengguna. Ini digunakan oleh DaoAuthenticationProvider untuk memuat detail tentang pengguna selama otentikasi.
+
+##Tutorial 8
+### What I have learned today
+>ReactJS
+
+### Pertanyaan
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+> Pertama saya menambahkan props inputType pada List.js. Kemudian saya mengubah input type pada Item.js menjadi {props.inputType}. Lalu menambahkan inputType hidden pada Our Menu di App.js dan AppFunc.js. Hal ini dilakukan agar checkbox pada Our Menu tidak ada. Kemudian menambahkan inputType checkbox pada My favorite agar terdapat checkbox pada My favorite. 
+>![Screen Shot 2019-11-13 at 21 18 05](https://user-images.githubusercontent.com/45730367/68771742-2a518e80-065b-11ea-824f-142a2c0eefe5.png)
+
+>![Screen Shot 2019-11-13 at 21 19 24](https://user-images.githubusercontent.com/45730367/68771842-5a992d00-065b-11ea-942c-0b64ef557757.png)
+
+>![Screen Shot 2019-11-13 at 21 20 56](https://user-images.githubusercontent.com/45730367/68771933-874d4480-065b-11ea-9ae4-bf494a279633.png)
+
+>![Screen Shot 2019-11-13 at 21 21 59](https://user-images.githubusercontent.com/45730367/68772035-ae0b7b00-065b-11ea-9c99-9da460c0897d.png)
+
+>Yang kedua saya membuat fungsi handleItemMenuClick pada App.js dan AppFunc.js. Fungsi ini dibuat agar setiap item yang di klik hanya bisa di uncheck di list sebelah kanan. Hal ini dilakukan dengan menghapus else pada function handleItemClick. Kemudian ubah onItemClick menjadi handleItemMenuClick.
+>![Screen Shot 2019-11-13 at 21 34 17](https://user-images.githubusercontent.com/45730367/68773016-64239480-065d-11ea-9f9d-8924df3bd493.png)
+
+>![Screen Shot 2019-11-13 at 21 37 50](https://user-images.githubusercontent.com/45730367/68773308-ed3acb80-065d-11ea-9b1b-04aa574408e8.png)
+
+>![Screen Shot 2019-11-13 at 21 36 31](https://user-images.githubusercontent.com/45730367/68773190-b795e280-065d-11ea-93c1-06e91de7ed91.png)
+
+>Yang ketiga, saya membuat checkbox show favorites di App.js. Pertama saya membuat state showFav. Kemudian, saya membuat fungsi untuk menandai state untuk show favorite. Kemudian saya membuat fungsi myFav untuk hide favorites jika checkbox di unchecked.
+>![Screen Shot 2019-11-13 at 21 44 25](https://user-images.githubusercontent.com/45730367/68773841-d779d600-065e-11ea-8a88-4684d8f3c427.png)
+ 
+>![Screen Shot 2019-11-13 at 21 45 20](https://user-images.githubusercontent.com/45730367/68774025-1576fa00-065f-11ea-9c47-c4c772f2e86f.png)
+
+>Yang keempat, saya membuat file EmptyState pada folder components. Kemudian, saya import EmptyState di List.js. Lalu, saya import juga di App.js untuk menjalankan pada class based jika list favorit saya kosong. Lalu load showFavnya jika ditambahkan ke list.
+
+>![Screen Shot 2019-11-13 at 21 51 19](https://user-images.githubusercontent.com/45730367/68774491-c41b3a80-065f-11ea-87ea-99d34401fbc3.png)
+
+>>![Screen Shot 2019-11-13 at 21 51 50](https://user-images.githubusercontent.com/45730367/68774841-4572cd00-0660-11ea-8042-0ca778ec6e91.png)
+
+>![Screen Shot 2019-11-13 at 21 52 19](https://user-images.githubusercontent.com/45730367/68774596-edd46180-065f-11ea-981f-ab5bcb16a988.png)
+
+>![Screen Shot 2019-11-13 at 21 52 54](https://user-images.githubusercontent.com/45730367/68774652-004e9b00-0660-11ea-9c6b-949a44f9aaba.png)
