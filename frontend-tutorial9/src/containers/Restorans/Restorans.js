@@ -11,12 +11,37 @@ class Restorans extends Component{
         this.state = {
             restorans: [],
             isCreate: false,
+            isEdit: false,
             isLoading: true,
             nama: "",
             alamat: "",
             nomorTelepon: "",
-            rating: ""
+            rating: "",
+            searchText: "",
+            filteredRestorans : []
         }
+    }
+
+    handleSearch(event) {
+        const newSearchText = event.target.value;
+        let newList = [];
+        let currentList = [];
+
+        this.setState({
+            searchText : newSearchText
+        })
+
+        if (event.target.value !== "") {
+            currentList = this.state.restorans;
+            newList = currentList.filter(restoran => {
+                return restoran.nama.includes(newSearchText);
+            });
+        } else {
+            newList = this.state.restorans;
+        }
+        this.setState({
+            filteredRestorans: newList
+        });
     }
 
     addRestoranHandler = () => {
@@ -24,7 +49,7 @@ class Restorans extends Component{
     }
 
     canceledHandler = () => {
-        this.setState({ isCreate: false });
+        this.setState({ isCreate: false, isEdit: false});
     }
 
     changeHandler = event => {
@@ -33,10 +58,43 @@ class Restorans extends Component{
         this.setState({ [name]: value});
     }
 
+    editRestoranHandler(restoran) {
+        this.setState({
+            isEdit: true,
+            idRestoran: restoran.idRestoran,
+            nama: restoran.nama,
+            nomorTelepon: restoran.nomorTelepon,
+            rating: restoran.rating,
+            alamat: restoran.alamat
+        })
+    }
+
     submitAddRestoranHandler = event => {
         event.preventDefault();
         this.setState({ isLoading: true});
         this.addRestoran();
+        this.canceledHandler();
+    }
+
+    submitEditRestoranHandler = event => {
+        console.log("editing")
+        event.preventDefault();
+        this.setState({ isLoading: true });
+        this.editRestoran();
+        this.canceledHandler();
+    }
+
+    async editRestoran(){
+        const restoranToEdit = {
+            idRestoran: this.state.idRestoran,
+            nama: this.state.nama,
+            alamat: this.state.alamat,
+            nomorTelepon: this.state.nomorTelepon,
+            rating: this.state.rating
+        };
+
+        await Axios.put("/restoran/" + this.state.idRestoran, restoranToEdit);
+        await this.loadRestorans();
         this.canceledHandler();
     }
 
@@ -49,6 +107,13 @@ class Restorans extends Component{
         };
 
         await Axios.post("/restoran", restoranToAdd);
+        await this.loadRestorans();
+        // Latihan Nomor 1
+        this.setState({nama: " ", alamat: " ", nomorTelepon: " ", rating: " "});
+    }
+
+    async deleteRestoranHandler(restoranId){
+        await Axios.delete(`/restoran/${restoranId}`);
         await this.loadRestorans();
     }
 
@@ -65,7 +130,8 @@ class Restorans extends Component{
             });
         }
         this.setState({
-            restorans: fetchedRestorans
+            restorans: fetchedRestorans,
+            filteredRestorans : fetchedRestorans
         });
     };
 
@@ -73,34 +139,42 @@ class Restorans extends Component{
         return(
             <React.Fragment>
                 <Modal show={this.state.isCreate || this.state.isEdit}
-                    modalClosed={this.canceledHandler}>
+                modalClosed={this.cancledHandler}>
                     {this.renderForm()}
                 </Modal>
-                <div className={classes.Title}>All Restorans</div>
-                <div className={classes.ButtonLayout}>
+                <div className={classes.Title}> All Restorans </div>
+                <div className={classes.wrap} >
+                    <div className={classes.search}>
+                        <input type="text" className={classes.searchTerm} onChange={e => this.handleSearch(e)} value={this.state.searchText} placeholder="Search..." />
+                    </div>
+                </div>
+                <div className={classes.Restorans}>
                     <button
                         className={classes.AddRestoranButton}
-                        onClick={this.addRestoranHandler}
+                        onClick={this.addrestoranHandler}
                     >
                         + Add New Restoran
                     </button>
                 </div>
                 <div className={classes.Restorans}>
-                    {this.state.restorans &&
-                     this.state.restorans.map(restoran => 
-                        <Restoran
-                            key={restoran.id}
-                            nama={restoran.nama}
-                            alamat={restoran.alamat}
-                            nomorTelepon={restoran.nomorTelepon}
-                        />
-                    )}
+                    {this.state.filteredRestorans && 
+                        this.state.filteredRestorans.map(restoran =>
+                            <Restoran
+                                key={restoran.id}
+                                nama={restoran.nama}
+                                alamat={restoran.alamat}
+                                nomorTelepon={restoran.nomorTelepon}
+                                edit={() => this.editRestoranHandler(restoran)}
+                                delete={() => this.deleteRestoranHandler(restoran.idRestoran)}
+                            />
+                        )}
                 </div>
             </React.Fragment>
         );
     }
 
     renderForm() {
+        const { isEdit } = this.state;
         return (
             <form>
                 <input
@@ -138,7 +212,8 @@ class Restorans extends Component{
                 <Button btnType="Danger" onClick={this.canceledHandler}>
                     CANCEL
                 </Button>
-                <Button btnType="Success" onClick={this.submitAddRestoranHandler}>
+                <Button btnType="Success" onClick={
+                    isEdit ? this.submitEditRestoranHandler : this.submitAddRestoranHandler}>
                     SUBMIT
                 </Button>
             </form>
