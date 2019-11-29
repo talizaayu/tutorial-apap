@@ -3,7 +3,7 @@ import Restoran from '../../components/Restoran/Restoran';
 import classes from "./Restorans.module.css";
 import Axios from '../../axios-restoran.js';
 import Modal from '../../components/UI/Modal/Modal';
-import Button from "../../components/UI/Button/Button";
+import Button from '../../components/UI/Button/Button';
 
 class Restorans extends Component{
     constructor(props){
@@ -18,9 +18,20 @@ class Restorans extends Component{
             nomorTelepon: "",
             rating: "",
             searchText: "",
-            filteredRestorans : []
+            filteredRestorans : [],
+            currentPage: 1,
+            restoransPerPage: 5,
+            upperPageBound: 3,
+            lowerPageBound: 0,
         }
+        this.handleClick = this.handleClick.bind(this);
     }
+
+    handleClick(event) {
+        this.setState({
+          currentPage: Number(event.target.id)
+        });
+    }    
 
     handleSearch(event) {
         const newSearchText = event.target.value;
@@ -34,7 +45,7 @@ class Restorans extends Component{
         if (event.target.value !== "") {
             currentList = this.state.restorans;
             newList = currentList.filter(restoran => {
-                return restoran.nama.includes(newSearchText);
+                return restoran.nama.startsWith(newSearchText);
             });
         } else {
             newList = this.state.restorans;
@@ -45,6 +56,7 @@ class Restorans extends Component{
     }
 
     addRestoranHandler = () => {
+        console.log("add")
         this.setState({ isCreate: true });
     }
 
@@ -53,7 +65,6 @@ class Restorans extends Component{
     }
 
     changeHandler = event => {
-        // name dari prop name di input
         const { name, value } = event.target;
         this.setState({ [name]: value});
     }
@@ -71,13 +82,13 @@ class Restorans extends Component{
 
     submitAddRestoranHandler = event => {
         event.preventDefault();
-        this.setState({ isLoading: true});
+        this.setState({ isLoading: true });
         this.addRestoran();
         this.canceledHandler();
     }
 
     submitEditRestoranHandler = event => {
-        console.log("editing")
+        // console.log("editing")
         event.preventDefault();
         this.setState({ isLoading: true });
         this.editRestoran();
@@ -136,6 +147,46 @@ class Restorans extends Component{
     };
 
     render(){
+        const { filteredRestorans, restorans, currentPage, restoransPerPage, upperPageBound,lowerPageBound } = this.state;
+
+        const indexOfLastTodo = currentPage * restoransPerPage;
+        const indexOfFirstTodo = indexOfLastTodo - restoransPerPage;
+        const currentRestorans = filteredRestorans.slice(indexOfFirstTodo, indexOfLastTodo);
+
+        console.log(filteredRestorans);
+        console.log(restorans);
+
+        const renderRestorans = currentRestorans.map((restoran) => {
+            return (
+                <Restoran
+                    key={restoran.id}
+                    nama={restoran.nama}
+                    alamat={restoran.alamat}
+                    nomorTelepon={restoran.nomorTelepon}
+                    edit={() => this.editRestoranHandler(restoran)}
+                    delete={() => this.deleteRestoranHandler(restoran.idRestoran)}
+                />
+            )
+        });
+
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(filteredRestorans.length / restoransPerPage); i++) {
+            pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            if(number === 1 && currentPage === 1){
+                return(
+                    <a key={number} className='active' id={number}><a href='#' id={number} onClick={this.handleClick}> {number} </a></a>
+                )
+            }
+            else if((number < upperPageBound + 1) && number > lowerPageBound){
+                return(
+                    <a key={number} id={number}><a href='#' id={number} onClick={this.handleClick}> {number} </a></a>
+                )
+            }
+        });
+
         return(
             <React.Fragment>
                 <Modal show={this.state.isCreate || this.state.isEdit}
@@ -143,21 +194,25 @@ class Restorans extends Component{
                     {this.renderForm()}
                 </Modal>
                 <div className={classes.Title}> All Restorans </div>
+                
+                <div className={classes.ButtonLayout}>
+                    <button  
+                    className={classes.AddRestoranButton}
+                    onClick={this.addRestoranHandler}>
+                        + Add New Restoran
+                    </button>
+                </div>
+
+
                 <div className={classes.wrap} >
                     <div className={classes.search}>
                         <input type="text" className={classes.searchTerm} onChange={e => this.handleSearch(e)} value={this.state.searchText} placeholder="Search..." />
                     </div>
                 </div>
+
                 <div className={classes.Restorans}>
-                    <button
-                        className={classes.AddRestoranButton}
-                        onClick={this.addrestoranHandler}
-                    >
-                        + Add New Restoran
-                    </button>
-                </div>
-                <div className={classes.Restorans}>
-                    {this.state.filteredRestorans && 
+                {renderRestorans}
+                    {/* {this.state.filteredRestorans && 
                         this.state.filteredRestorans.map(restoran =>
                             <Restoran
                                 key={restoran.id}
@@ -167,7 +222,12 @@ class Restorans extends Component{
                                 edit={() => this.editRestoranHandler(restoran)}
                                 delete={() => this.deleteRestoranHandler(restoran.idRestoran)}
                             />
-                        )}
+                        )} */}
+                </div>
+                <div>
+                    <ul id="page-numbers">
+                        {renderPageNumbers}
+                    </ul>
                 </div>
             </React.Fragment>
         );

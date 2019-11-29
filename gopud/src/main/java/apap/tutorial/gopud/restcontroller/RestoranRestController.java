@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1")
 public class RestoranRestController {
