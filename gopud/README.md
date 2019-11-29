@@ -206,3 +206,118 @@ Cara kerja bycrpt : "Generate a random salt. A "cost" factor has been pre-config
 >![Screen Shot 2019-11-13 at 21 52 19](https://user-images.githubusercontent.com/45730367/68774596-edd46180-065f-11ea-981f-ab5bcb16a988.png)
 
 >![Screen Shot 2019-11-13 at 21 52 54](https://user-images.githubusercontent.com/45730367/68774652-004e9b00-0660-11ea-9c6b-949a44f9aaba.png)
+
+
+##Tutorial 9
+### What I have learned today
+>Http request in React & menyambungkan frontend(react) dan backend(gopud application)
+
+### Pertanyaan
+
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?
+> Saya menambahkan  this.setState({nama: " ", alamat: " ", nomorTelepon: " ", rating: " "}); pada bagian async addRestoran di Restorans.js agar setiap kali ingin add restoran isi kotak form akan tetap dalam kondisi kosong.
+>![Screen Shot 2019-11-29 at 13 29 57](https://user-images.githubusercontent.com/45730367/69848324-649e6b00-12ac-11ea-8d15-cb00c13b109f.png)
+2. Jelaskan fungsi dari async dan await!
+> Fungsi async dapat berisi ekspresi await yang menghentikan sementara eksekusi fungsi async dan menunggu resolusi Promise yang disahkan, dan kemudian melanjutkan eksekusi fungsi async dan mengembalikan nilai yang diselesaikan.Await hanya valid di dalam fungsi async.
+3. Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada pertanyaan ini.
+> ![1](https://user-images.githubusercontent.com/45730367/69856976-70485c80-12c1-11ea-9061-47627bdfee53.png)
+>
+> ![Screen Shot 2019-11-27 at 10 55 19](https://user-images.githubusercontent.com/45730367/69857645-f31de700-12c2-11ea-8649-3fc4f865dd66.png)
+>
+>![Screen Shot 2019-11-27 at 11 41 03](https://user-images.githubusercontent.com/45730367/69857870-5f98e600-12c3-11ea-97a4-4c418bd3eab8.png)
+> 
+>![Screen Shot 2019-11-27 at 11 41 39](https://user-images.githubusercontent.com/45730367/69857882-64f63080-12c3-11ea-9171-fc341b41cd92.png)
+>
+> ![Screen Shot 2019-11-27 at 11 01 29](https://user-images.githubusercontent.com/45730367/69857551-c5d13900-12c2-11ea-86d4-bb3632452eb0.png)
+>
+>![Screen Shot 2019-11-27 at 11 42 21](https://user-images.githubusercontent.com/45730367/69858036-bef6f600-12c3-11ea-8ea3-19ba4f15c861.png)
+>
+>![Screen Shot 2019-11-27 at 11 45 39](https://user-images.githubusercontent.com/45730367/69858105-e221a580-12c3-11ea-8897-0c07018ef73d.png)
+>
+>![Screen Shot 2019-11-27 at 14 13 17](https://user-images.githubusercontent.com/45730367/69858145-f9609300-12c3-11ea-96f6-20a1344ca080.png)
+>
+>![Screen Shot 2019-11-27 at 14 34 03](https://user-images.githubusercontent.com/45730367/69858247-2e6ce580-12c4-11ea-9dd1-49d63b0838c5.png)
+>
+>![Screen Shot 2019-11-27 at 14 37 01](https://user-images.githubusercontent.com/45730367/69858316-54928580-12c4-11ea-94fa-07228d9a83d4.png)
+>
+>![Screen Shot 2019-11-27 at 15 21 10](https://user-images.githubusercontent.com/45730367/69858401-80157000-12c4-11ea-9731-f1e6b371433c.png)
+>
+>![Screen Shot 2019-11-27 at 16 25 07](https://user-images.githubusercontent.com/45730367/69858456-9f140200-12c4-11ea-8fac-24d82e5892c7.png)
+>
+>![Screen Shot 2019-11-27 at 16 28 14](https://user-images.githubusercontent.com/45730367/69858507-bbb03a00-12c4-11ea-9daf-b4907bb117c3.png)
+>
+>![Screenshot (154)](https://user-images.githubusercontent.com/45730367/69859837-8e18c000-12c7-11ea-9efe-22c659734286.png)
+>
+>![Screen Shot 2019-11-29 at 16 30 27](https://user-images.githubusercontent.com/45730367/69859889-a8529e00-12c7-11ea-9eec-a91359be0679.png)
+>
+>![Screen Shot 2019-11-29 at 16 29 10](https://user-images.githubusercontent.com/45730367/69858826-6cb6d480-12c5-11ea-92c9-1a3bc8f3f96f.png)
+>
+>![Screen Shot 2019-11-29 at 17 09 49](https://user-images.githubusercontent.com/45730367/69861527-219fc000-12cb-11ea-90c7-1bd9675ccd44.png)
+>
+>![Screen Shot 2019-11-28 at 19 11 06](https://user-images.githubusercontent.com/45730367/69875611-2aef5380-12f0-11ea-8a14-27bada4ff13a.png)
+>
+>![Screen Shot 2019-11-28 at 19 11 13](https://user-images.githubusercontent.com/45730367/69875613-2aef5380-12f0-11ea-95b2-45640f33707b.png)
+>
+>![Screen Shot 2019-11-28 at 19 11 22](https://user-images.githubusercontent.com/45730367/69875614-2b87ea00-12f0-11ea-8658-a3fc57b3e69a.png)
+>
+>![Screen Shot 2019-11-28 at 19 11 32](https://user-images.githubusercontent.com/45730367/69875615-2c208080-12f0-11ea-9238-c91c5f1f6a8b.png)
+>
+>![Screen Shot 2019-11-28 at 19 11 49](https://user-images.githubusercontent.com/45730367/69875616-2c208080-12f0-11ea-9e01-e92a15c54afa.png)
+>
+>![Screen Shot 2019-11-28 at 19 12 01](https://user-images.githubusercontent.com/45730367/69875617-2cb91700-12f0-11ea-9003-3ad432864292.png)
+>
+>![Screen Shot 2019-11-28 at 19 15 32](https://user-images.githubusercontent.com/45730367/69875618-2cb91700-12f0-11ea-8bda-fa6df60237c0.png)
+>
+>![Screen Shot 2019-11-28 at 19 20 06](https://user-images.githubusercontent.com/45730367/69875620-2d51ad80-12f0-11ea-859a-4fa0971d2bdf.png)
+>
+>![Screen Shot 2019-11-29 at 21 38 42](https://user-images.githubusercontent.com/45730367/69875839-a5b86e80-12f0-11ea-8434-1bbad3b1dd2c.png)
+>
+>![Screen Shot 2019-11-28 at 19 27 19](https://user-images.githubusercontent.com/45730367/69875945-e57f5600-12f0-11ea-98dc-22624f1296e6.png)
+>
+>![Screen Shot 2019-11-28 at 19 27 24](https://user-images.githubusercontent.com/45730367/69875989-0778d880-12f1-11ea-908f-df4a53b2b113.png)
+>![Screen Shot 2019-11-28 at 19 30 02](https://user-images.githubusercontent.com/45730367/69876051-355e1d00-12f1-11ea-81c8-de651a152198.png)
+>
+>![Screen Shot 2019-11-28 at 19 39 03](https://user-images.githubusercontent.com/45730367/69876055-368f4a00-12f1-11ea-9234-a8607bb209c9.png)
+>
+>![Screen Shot 2019-11-28 at 20 40 25](https://user-images.githubusercontent.com/45730367/69876056-368f4a00-12f1-11ea-8865-01cecc401662.png)
+>
+> ![Screen Shot 2019-11-28 at 20 48 07](https://user-images.githubusercontent.com/45730367/69876057-3727e080-12f1-11ea-936c-14c5cf14c5cb.png)
+>
+ >![Screen Shot 2019-11-28 at 20 49 56](https://user-images.githubusercontent.com/45730367/69876058-3727e080-12f1-11ea-8db6-65c96ed3d449.png)
+>
+> ![Screen Shot 2019-11-28 at 20 50 01](https://user-images.githubusercontent.com/45730367/69876061-37c07700-12f1-11ea-9d78-fe31263eb143.png)
+>
+> ![Screen Shot 2019-11-28 at 20 51 32](https://user-images.githubusercontent.com/45730367/69876064-37c07700-12f1-11ea-9715-00bbba7803f5.png)
+>
+> ![Screen Shot 2019-11-28 at 22 10 39](https://user-images.githubusercontent.com/45730367/69876065-38590d80-12f1-11ea-8c72-07d8247dd7be.png)
+>
+ >![Screen Shot 2019-11-28 at 22 17 07](https://user-images.githubusercontent.com/45730367/69876068-38f1a400-12f1-11ea-996b-feaf9d07c96e.png)
+>
+ >![Screen Shot 2019-11-28 at 22 17 13](https://user-images.githubusercontent.com/45730367/69876069-38f1a400-12f1-11ea-8985-68e26e06a8b2.png)
+>
+ >![Screen Shot 2019-11-28 at 22 21 20](https://user-images.githubusercontent.com/45730367/69876070-398a3a80-12f1-11ea-9d10-9ad895378c40.png)
+>
+ >![Screen Shot 2019-11-28 at 22 21 35](https://user-images.githubusercontent.com/45730367/69876071-398a3a80-12f1-11ea-8b69-79c1d215485d.png)
+>
+ >![Screen Shot 2019-11-28 at 22 22 18](https://user-images.githubusercontent.com/45730367/69876074-3abb6780-12f1-11ea-8b4f-195e50058838.png)
+>
+ >![Screen Shot 2019-11-28 at 23 49 51](https://user-images.githubusercontent.com/45730367/69876075-3abb6780-12f1-11ea-9563-faa3ebef72a2.png)
+>
+ >![Screen Shot 2019-11-28 at 23 49 59](https://user-images.githubusercontent.com/45730367/69876077-3b53fe00-12f1-11ea-8fd5-189e312fb679.png)
+>
+ >![Screen Shot 2019-11-28 at 23 50 14](https://user-images.githubusercontent.com/45730367/69876078-3b53fe00-12f1-11ea-909b-572a7e9de052.png)
+>
+ >![Screen Shot 2019-11-28 at 23 50 24](https://user-images.githubusercontent.com/45730367/69876081-3bec9480-12f1-11ea-80b5-87d27c64b742.png)
+>
+ >![Screen Shot 2019-11-29 at 21 43 34](https://user-images.githubusercontent.com/45730367/69876141-63dbf800-12f1-11ea-84d2-5fb432268fe1.png)
+>
+ >![Screen Shot 2019-11-29 at 21 43 45](https://user-images.githubusercontent.com/45730367/69876142-64748e80-12f1-11ea-91b4-f942e7e330ed.png)
+
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.
+> componentDidMount dipanggil segera setelah komponen di-mount. Inisialisasi yang memerlukan node DOM harus pergi di sini. Jika perlu memuat data dari titik akhir jarak jauh, ini adalah tempat yang baik untuk membuat instantiate permintaan jaringan.
+> shouldComponentUpdate digunakan untuk memberi tahu React jika output komponen tidak terpengaruh oleh perubahan saat ini dalam status atau properti. Perilaku default adalah untuk me-render ulang pada setiap perubahan state, dan dalam sebagian besar kasus harus bergantung pada default behaviour.
+> componentDidUpdate dipanggil segera setelah update terjadi. Metode ini tidak dipanggil untuk render awal. Metode ini digunakan sebagai peluang untuk beroperasi pada DOM ketika komponen telah di-update. Ini juga merupakan tempat yang baik untuk melakukan permintaan jaringan selama membandingkan current props dengan previous props.
+> componentWillUpdate dipanggil tepat sebelum rendering saat props atau state baru diterima. Metode ini digunakan sebagai kesempatan untuk melakukan persiapan sebelum update terjadi. Metode ini tidak dipanggil untuk render awal.
+> componentWillUnmount dipanggil segera sebelum component di-unmounted dan di-destroyed. Lakukan cleanup apa pun yang diperlukan dalam metode ini, seperti timer yang tidak valid, membatalkan network requests, atau membersihkan subscription apa pun yang dibuat di componentDidMount().
