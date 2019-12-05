@@ -2,16 +2,19 @@ import React from "react";
 import List from "./components/List";
 import dummyItems from "./items.json";
 import EmptyState from './components/EmptyState';
+import "./App.css";
 
 export default class App extends React.Component {
   state = {
     favItems: [],
     showFav: false,
+    isLight: true
   };
   handleChange = () => this.setState({ showFav: !this.state.showFav});
   render() {
     const {favItems} = this.state;
     return (
+      <div className={this.state.isLight ? 'lightMode' : 'darkMode'}> 
       <div className="container-fluid">
         <h1 className="text-center">
           Welcome!
@@ -21,6 +24,14 @@ export default class App extends React.Component {
             <input type="checkbox" onChange={this.handleChange}/>
             <small>Show Favorite</small>
         </div>
+
+        <div className ="row">
+          <div className = "col-sm" align="right">
+            <input type="checkbox" onChange={this.mode}/>
+            <small> Dark Mode </small>
+          </div>
+        </div>
+
         <div className="container pt-3">
           <div className="row">
             <div className="col-sm">
@@ -35,8 +46,17 @@ export default class App extends React.Component {
           </div>
         </div>
       </div>
+      </div>
     );
   }
+
+  mode = () => {
+    if (this.state.isLight) {
+      this.setState({ isLight: false})
+    } else {
+      this.setState({ isLight: true})
+    }
+  };
 
   handleItemClick = item => {
     const newItems = [...this.state.favItems];
@@ -77,3 +97,39 @@ export default class App extends React.Component {
     }
   }
 }
+
+// state :
+// isLight: true
+
+// return :
+// <div className={this.state.isLight ? classes.lightMode : classes.darkMode}>
+
+// buat method:
+// mode = () => {
+//   if (this.state.isLight) {
+//     this.setState({ isLight: false})
+//     console.log("test")
+//   } else {
+//     this.setState({ isLight: true})
+//     console.log("test2")
+//   }
+// };
+
+// return :
+// <div className ="row">
+//       <div className = "col-sm" align="right">
+//         <input type="checkbox" onChange={this.mode}/>
+//         <small> Dark Mode </small>
+//       </div>
+//     </div>
+
+
+// css :
+// .lightMode{
+//   background-color: #ffffff
+// }
+
+// .darkMode{
+//   background-color: #333333;
+//   color: #ffffff
+// }
