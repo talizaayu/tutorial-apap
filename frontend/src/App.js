@@ -97,39 +97,3 @@ export default class App extends React.Component {
     }
   }
 }
-
-// state :
-// isLight: true
-
-// return :
-// <div className={this.state.isLight ? classes.lightMode : classes.darkMode}>
-
-// buat method:
-// mode = () => {
-//   if (this.state.isLight) {
-//     this.setState({ isLight: false})
-//     console.log("test")
-//   } else {
-//     this.setState({ isLight: true})
-//     console.log("test2")
-//   }
-// };
-
-// return :
-// <div className ="row">
-//       <div className = "col-sm" align="right">
-//         <input type="checkbox" onChange={this.mode}/>
-//         <small> Dark Mode </small>
-//       </div>
-//     </div>
-
-
-// css :
-// .lightMode{
-//   background-color: #ffffff
-// }
-
-// .darkMode{
-//   background-color: #333333;
-//   color: #ffffff
-// }
